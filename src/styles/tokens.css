@@ -1,0 +1,117 @@
+:root {
+  /* ---- Paper & Ink ------------------------------------------------------ */
+  --canvas: #faf8f4;
+  --canvas-deep: #f4f1ea;
+  --surface: #fffdf9;
+  --surface-raised: #ffffff;
+  --ink: #1f1c18;
+  --ink-soft: #33302a;
+  --body: #4a453d;
+  --mute: #7a7469;
+  --faint: #a8a194;
+  --hairline: rgba(31, 28, 24, 0.1);
+  --hairline-strong: rgba(31, 28, 24, 0.22);
+
+  /* ---- Accent ----------------------------------------------------------- */
+  --accent: #8a3a26;
+  --accent-ink: #6e2d1d;
+  --accent-soft: #f0e0d8;
+  --accent-faint: #f5ebe5;
+
+  /* ---- Reader themes ---------------------------------------------------- */
+  --reader-canvas: #faf8f4;
+  --reader-ink: #2a2722;
+  --reader-mute: #8b857a;
+
+  /* ---- Type scale ------------------------------------------------------- */
+  --font-serif: 'Literata', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-book:
+    'Palatino Linotype', Palatino, 'Book Antiqua', 'Iowan Old Style', 'Charter',
+    Georgia, serif;
+  --font-georgia: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-mono:
+    ui-monospace, 'Cascadia Code', 'SF Mono', 'Menlo', Consolas, monospace;
+
+  --text-xs: 0.72rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.625rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+
+  /* ---- Spacing ---------------------------------------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+
+  /* ---- Reading dimensions ---------------------------------------------- */
+  --read-max: 38rem; /* ~608px comfortable prose column */
+  --read-wide: 46rem;
+  --read-narrow: 30rem;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --shell-max: 72rem;
+  --nav-h: 3.5rem;
+  --radius: 2px;
+  --radius-lg: 4px;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 120ms;
+  --t-med: 220ms;
+  --t-slow: 360ms;
+
+  /* ---- Shadows (used sparingly, only for lifted layers) ---------------- */
+  --shadow-lift:
+    0 1px 2px rgba(31, 28, 24, 0.06), 0 8px 24px rgba(31, 28, 24, 0.08);
+}
+
+/* ---- Reader themes ------------------------------------------------------ */
+
+[data-reader-theme='sepia'] {
+  --reader-canvas: #f4ecd8;
+  --reader-ink: #3a3327;
+  --reader-mute: #8a7f6a;
+}
+
+[data-reader-theme='dark'] {
+  --reader-canvas: #181512;
+  --reader-ink: #d8d2c6;
+  --reader-mute: #8f877a;
+}
+
+[data-reader-theme='oled'] {
+  --reader-canvas: #000000;
+  --reader-ink: #cbc6ba;
+  --reader-mute: #6e6a60;
+}
+
+[data-reader-theme='paper'] {
+  --reader-canvas: #fdfbf7;
+  --reader-ink: #24211c;
+  --reader-mute: #8b857a;
+}
+
+/* Custom palette: colors arrive as --reader-bg-custom / --reader-text-custom
+   set inline on the element or the <body>. */
+[data-reader-theme='custom'] {
+  --reader-canvas: var(--reader-bg-custom, #f4ecd8);
+  --reader-ink: var(--reader-text-custom, #3a3327);
+  --reader-mute: color-mix(
+    in srgb,
+    var(--reader-text-custom, #3a3327) 62%,
+    transparent
+  );
+}

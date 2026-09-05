@@ -1,0 +1,43 @@
+{
+  "name": "litheum",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1123.0",
+    "@aws-sdk/s3-request-presigner": "^3.1123.0",
+    "@huggingface/transformers": "^4.2.0",
+    "@neon/config": "^1.1.0",
+    "@neon/env": "^1.1.6",
+    "@neondatabase/serverless": "^1.1.0",
+    "cheerio": "^1.0.0",
+    "dompurify": "^3.1.6",
+    "dotenv": "^17.4.2",
+    "idb-keyval": "^6.2.1",
+    "lucide-react": "^1.38.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^30.0.1",
+    "prettier": "^3.9.6",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.5",
+    "vitest": "^1.6.1"
+  }
+}

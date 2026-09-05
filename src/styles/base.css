@@ -1,0 +1,264 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: var(--body);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background var(--t-med) var(--ease),
+    color var(--t-med) var(--ease);
+}
+
+body.reading {
+  background: var(--reader-canvas);
+  color: var(--reader-ink);
+  transition:
+    background var(--t-med) var(--ease),
+    color var(--t-med) var(--ease);
+}
+
+body.reading ::-webkit-scrollbar-thumb {
+  border-color: var(--reader-canvas);
+  background: color-mix(in srgb, var(--reader-ink) 28%, transparent);
+}
+
+body.reading ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--faint);
+  border-radius: 5px;
+  border: 2px solid var(--canvas);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---- Shared primitives -------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 0 var(--sp-5);
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.rule {
+  height: 1px;
+  background: var(--hairline);
+  border: 0;
+  margin: 0;
+}
+
+.rule-strong {
+  height: 1px;
+  background: var(--hairline-strong);
+  border: 0;
+  margin: 0;
+}
+
+/* ---- Buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  padding: 0.5rem 0.9rem;
+  transition:
+    background var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fdf9f5;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline-strong);
+}
+
+.btn-ghost:hover {
+  background: var(--canvas-deep);
+}
+
+.btn-quiet {
+  background: transparent;
+  color: var(--body);
+  border-color: transparent;
+  padding: 0.375rem 0.6rem;
+}
+
+.btn-quiet:hover {
+  color: var(--ink);
+  background: var(--canvas-deep);
+}
+
+.btn-danger-ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: transparent;
+  padding: 0.375rem 0.6rem;
+}
+
+.btn-danger-ghost:hover {
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ---- Icon button -------------------------------------------------------- */
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mute);
+  transition:
+    color var(--t-fast) var(--ease),
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.icon-btn:hover {
+  color: var(--ink);
+  background: var(--canvas-deep);
+}
+
+.icon-btn.active {
+  color: var(--accent);
+}
+
+/* ---- Progress ----------------------------------------------------------- */
+
+.progress-track {
+  height: 2px;
+  border-radius: 1px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width var(--t-med) var(--ease);
+}
+
+/* ---- Skeleton / placeholder ------------------------------------------- */
+
+.placeholder {
+  background: linear-gradient(
+    100deg,
+    var(--canvas-deep) 40%,
+    var(--surface) 50%,
+    var(--canvas-deep) 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,30 @@
+node_modules
+dist
+dist-ssr
+*.local
+.vite
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Env / secrets — never commit real credentials
+.env
+.env.*
+!.env.example
+neon/.dev.vars
+.wrangler
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# TypeScript / build cache
+*.tsbuildinfo
+
+# Temp / debug
+_plugin_test*.mjs
+.neon
