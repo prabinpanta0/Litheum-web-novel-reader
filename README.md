@@ -15,7 +15,10 @@ npm test           # unit tests (vitest)
 
 Vite's dev server ships a same-origin content proxy (`/https:<url>`) so plugins
 can fetch novel sites that don't send CORS headers. Set
-`setNetwork({ mode: 'proxy' })` — this is done in `App.tsx` on mount.
+`setNetwork({ mode: 'proxy' })` — this is done in `App.tsx` on mount. The
+production build points at the equivalent Vercel serverless function,
+`/api/proxy?url=<encoded>` (`api/proxy.ts`), so sources keep working on the
+static deployment.
 
 ## Architecture
 
@@ -24,7 +27,8 @@ can fetch novel sites that don't send CORS headers. Set
 - **`src/store/`** — local persistence. Backends are pluggable: browser
   (IndexedDB) or device files (OPFS), selected in Settings.
 - **`src/pages/`** — Library, Search, Sources, Reader, Settings.
-- **`vite/proxy.ts`** — the dev content proxy.
+- **`vite/proxy.ts`** — the dev content proxy (`api/proxy.ts` mirrors it for
+  the Vercel deployment).
 - **`src/sync/` + Neon** — optional cloud sync (see below).
 
 ## Cloud sync (optional)

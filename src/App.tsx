@@ -16,7 +16,13 @@ export default function App() {
   const { loading } = useApp();
 
   useEffect(() => {
-    setNetwork({ mode: 'proxy', proxyRoot: '/https:' });
+    // Dev uses the Vite middleware proxy (`/https:<url>`); the static Vercel
+    // deployment receives no such route, so route through the serverless
+    // proxy (`/api/proxy?url=<encoded>`) instead.
+    setNetwork({
+      mode: 'proxy',
+      proxyRoot: import.meta.env.PROD ? '/api/proxy?url=' : '/https:',
+    });
   }, []);
 
   if (loading) {
